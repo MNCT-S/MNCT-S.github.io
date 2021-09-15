@@ -1,0 +1,966 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://MNCT-S.github.io/getting-started/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+    
+    
+      
+        <title>EV3 MicroPython の使い方 - EV3 MicroPython</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.802231af.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#546d78">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosansjp.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="light-blue">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ev3-micropython" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="EV3 MicroPython" class="md-header__button md-logo" aria-label="EV3 MicroPython" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            EV3 MicroPython
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              EV3 MicroPython の使い方
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="クリア" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="EV3 MicroPython" class="md-nav__button md-logo" aria-label="EV3 MicroPython" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+
+    </a>
+    EV3 MicroPython
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        はじめに
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="はじめに" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          はじめに
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        EV3 MicroPython とは
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        インストール
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="インストール" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          インストール
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install_ev3/" class="md-nav__link">
+        Ev3 MicroPython の書き込み
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install_vscode/" class="md-nav__link">
+        開発環境の構築
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        使い方
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="使い方" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          使い方
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          EV3 MicroPython の使い方
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        EV3 MicroPython の使い方
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+     プロジェクトについて
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+     プログラミング演習
+  </a>
+  
+    <nav class="md-nav" aria-label=" プログラミング演習">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+     モータ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    各種センサ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="ev3-micropython">EV3 MicroPython の使い方</h1>
+<p>開発環境の構築で，プロジェクトの作成から EV3 インテリジェントブロックへのプログラムの転送・実行方法は説明hしているので，手順を失念した方は再度振り返ってください．</p>
+<div class="admonition info">
+<p>ここでは，軽い説明に留めておきます．</p>
+</div>
+<h2 id="_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.35 3c1.18-.17 2.43 1.12 2.79 2.9.36 1.77-.29 3.35-1.47 3.53-1.17.18-2.43-1.11-2.8-2.89-.37-1.77.3-3.35 1.48-3.54m7.15 0c1.19.19 1.85 1.77 1.5 3.54-.38 1.78-1.63 3.07-2.81 2.89-1.19-.18-1.84-1.76-1.47-3.53.36-1.78 1.61-3.07 2.78-2.9M3 7.6c1.14-.49 2.69.4 3.5 1.95.76 1.58.5 3.24-.63 3.73-1.13.49-2.67-.39-3.46-1.96C1.62 9.75 1.9 8.08 3 7.6m18 0c1.1.48 1.38 2.15.59 3.72-.79 1.57-2.33 2.45-3.46 1.96-1.13-.49-1.39-2.15-.63-3.73C18.31 8 19.86 7.11 21 7.6m-1.67 10.78c.04.94-.68 1.98-1.54 2.37-1.79.82-3.91-.88-5.9-.88-1.99 0-4.13 1.77-5.89.88-1-.49-1.69-1.79-1.56-2.87.18-1.49 1.97-2.29 3.03-3.38 1.41-1.41 2.41-4.06 4.42-4.06 2 0 3.06 2.61 4.41 4.06 1.11 1.22 2.96 2.25 3.03 3.88z"/></svg></span> プロジェクトについて</h2>
+<ol>
+<li>
+<p>サイドバーの <code>EV3 Micro Python</code> から，<code>Create a new project</code> をクリックして新規にプロジェクトを作成してください<br />
+プロジェクト名は,<code>ev3first</code> にします．どんなプロジェクト名でも構わないのですが，ここでは，同じプロジェクト名にしてください．</p>
+</li>
+<li>
+<p>自動的にプロジェクト名 (<code>ev3first</code>) のフォルダと関連するファイルも同時に生成されます．基本的には，<code>main.py</code> を編集してプログラムを作成します．<br />
+<div class="highlight"><pre><span></span><code><span class="go">ev3first</span>
+<span class="go">├── .gitignore</span>
+<span class="go">├── .vscode</span>
+<span class="go">│   ├── extensions.json</span>
+<span class="go">│   ├── launch.json</span>
+<span class="go">│   └── settings.json</span>
+<span class="go">└── main.py</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><code>main.py</code> は，下記のようになっています．<code>#</code> から始まる行は，コメント（説明）なので削除しても構いませんが，1 行目 の <strong><code>#!/usr/bin/env pybricks-micropython</code></strong> は削除してはいけません．<br />
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="ch">#!/usr/bin/env pybricks-micropython</span>
+</span><span class="hll"><span class="kn">from</span> <span class="nn">pybricks.hubs</span> <span class="kn">import</span> <span class="n">EV3Brick</span>
+</span><span class="hll"><span class="kn">from</span> <span class="nn">pybricks.ev3devices</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Motor</span><span class="p">,</span> <span class="n">TouchSensor</span><span class="p">,</span> <span class="n">ColorSensor</span><span class="p">,</span>
+</span><span class="hll">                                 <span class="n">InfraredSensor</span><span class="p">,</span> <span class="n">UltrasonicSensor</span><span class="p">,</span> <span class="n">GyroSensor</span><span class="p">)</span>
+</span><span class="hll"><span class="kn">from</span> <span class="nn">pybricks.parameters</span> <span class="kn">import</span> <span class="n">Port</span><span class="p">,</span> <span class="n">Stop</span><span class="p">,</span> <span class="n">Direction</span><span class="p">,</span> <span class="n">Button</span><span class="p">,</span> <span class="n">Color</span>
+</span><span class="hll"><span class="kn">from</span> <span class="nn">pybricks.tools</span> <span class="kn">import</span> <span class="n">wait</span><span class="p">,</span> <span class="n">StopWatch</span><span class="p">,</span> <span class="n">DataLog</span>
+</span><span class="hll"><span class="kn">from</span> <span class="nn">pybricks.robotics</span> <span class="kn">import</span> <span class="n">DriveBase</span>
+</span><span class="hll"><span class="kn">from</span> <span class="nn">pybricks.media.ev3dev</span> <span class="kn">import</span> <span class="n">SoundFile</span><span class="p">,</span> <span class="n">ImageFile</span>
+</span><span class="hll">
+</span><span class="hll">
+</span><span class="hll"><span class="c1"># This program requires LEGO EV3 MicroPython v2.0 or higher.</span>
+</span><span class="hll"><span class="c1"># Click &quot;Open user guide&quot; on the EV3 extension tab for more information.</span>
+</span><span class="hll">
+</span><span class="hll">
+</span><span class="hll"><span class="c1"># Create your objects here.</span>
+</span><span class="hll"><span class="n">ev3</span> <span class="o">=</span> <span class="n">EV3Brick</span><span class="p">()</span>
+</span>
+
+<span class="c1"># Write your program here.</span>
+<span class="n">ev3</span><span class="o">.</span><span class="n">speaker</span><span class="o">.</span><span class="n">beep</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table></p>
+</li>
+<li>
+<p>EV3 の前進の NXT のセンサを使うには以下の設定が必要になります．ここでは，<code>NXT Sound Sensor</code> を使うときに必要になります．<code>main.py</code> の 9 行目あたりに追加します．
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pybricks.nxtdevices</span> <span class="kn">import</span> <span class="n">SoundSensor</span>
+</code></pre></div>
+</td></tr></table></p>
+</li>
+<li>
+<p>16 行目までは，基本的にはそのままで，19 行以降にプログラムを作成していきます．<br />
+ ここでは，<code>ev3.speaker.beep()</code> は，ビープ音を鳴らすメソッドになります．</p>
+</li>
+</ol>
+<div class="admonition danger">
+<p>メソッドは関数の 1 種で詳しく，プログラミングの授業を復習してください．</p>
+</div>
+<h2 id="_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.35 3c1.18-.17 2.43 1.12 2.79 2.9.36 1.77-.29 3.35-1.47 3.53-1.17.18-2.43-1.11-2.8-2.89-.37-1.77.3-3.35 1.48-3.54m7.15 0c1.19.19 1.85 1.77 1.5 3.54-.38 1.78-1.63 3.07-2.81 2.89-1.19-.18-1.84-1.76-1.47-3.53.36-1.78 1.61-3.07 2.78-2.9M3 7.6c1.14-.49 2.69.4 3.5 1.95.76 1.58.5 3.24-.63 3.73-1.13.49-2.67-.39-3.46-1.96C1.62 9.75 1.9 8.08 3 7.6m18 0c1.1.48 1.38 2.15.59 3.72-.79 1.57-2.33 2.45-3.46 1.96-1.13-.49-1.39-2.15-.63-3.73C18.31 8 19.86 7.11 21 7.6m-1.67 10.78c.04.94-.68 1.98-1.54 2.37-1.79.82-3.91-.88-5.9-.88-1.99 0-4.13 1.77-5.89.88-1-.49-1.69-1.79-1.56-2.87.18-1.49 1.97-2.29 3.03-3.38 1.41-1.41 2.41-4.06 4.42-4.06 2 0 3.06 2.61 4.41 4.06 1.11 1.22 2.96 2.25 3.03 3.88z"/></svg></span> プログラミング演習</h2>
+<p>詳細は，指導書を見てください．</p>
+<p>また，適宜，オンラインヘルプを参照して，クラス，関数などの使い方を確認してください．</p>
+<ul>
+<li>
+<p><a href="https://pybricks.com/ev3-micropython/">EV3 MicroPython</a></p>
+</li>
+<li>
+<p><a href="https://www.robotc.net/WebHelpMindstorms/index.htm">RobotC</a></p>
+</li>
+</ul>
+<div class="admonition info">
+<p><code>EV3 MicroPython</code> については，VS Code の拡張機能の中に同封されているので，
+サイドバーの <code>EV3 Micro Python</code> から，<code>Open user guide</code> をクリックするとブラウザーに表示されます．</p>
+</div>
+<h3 id="_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/></svg></span> モータ</h3>
+<details class="example" open="open"><summary>PWM 信号のデューティ比によりモータ速度を調整する方法</summary><div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">MicroPython</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env pybricks-micropython</span>
+<span class="kn">from</span> <span class="nn">pybricks.hubs</span> <span class="kn">import</span> <span class="n">EV3Brick</span>
+<span class="kn">from</span> <span class="nn">pybricks.ev3devices</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Motor</span><span class="p">,</span> <span class="n">TouchSensor</span><span class="p">,</span> <span class="n">ColorSensor</span><span class="p">,</span>
+                                 <span class="n">InfraredSensor</span><span class="p">,</span> <span class="n">UltrasonicSensor</span><span class="p">,</span> <span class="n">GyroSensor</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pybricks.parameters</span> <span class="kn">import</span> <span class="n">Port</span><span class="p">,</span> <span class="n">Stop</span><span class="p">,</span> <span class="n">Direction</span><span class="p">,</span> <span class="n">Button</span><span class="p">,</span> <span class="n">Color</span>
+<span class="kn">from</span> <span class="nn">pybricks.tools</span> <span class="kn">import</span> <span class="n">wait</span><span class="p">,</span> <span class="n">StopWatch</span><span class="p">,</span> <span class="n">DataLog</span>
+<span class="kn">from</span> <span class="nn">pybricks.robotics</span> <span class="kn">import</span> <span class="n">DriveBase</span>
+<span class="kn">from</span> <span class="nn">pybricks.media.ev3dev</span> <span class="kn">import</span> <span class="n">SoundFile</span><span class="p">,</span> <span class="n">ImageFile</span>
+
+<span class="n">ev3</span> <span class="o">=</span> <span class="n">EV3Brick</span><span class="p">()</span>
+
+<span class="n">motorB</span> <span class="o">=</span> <span class="n">Motor</span><span class="p">(</span><span class="n">Port</span><span class="o">.</span><span class="n">B</span><span class="p">)</span>
+<span class="n">motorC</span> <span class="o">=</span> <span class="n">Motor</span><span class="p">(</span><span class="n">Port</span><span class="o">.</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">motorB</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">motorC</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">wait</span><span class="p">(</span><span class="mi">3000</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Robot C</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">task</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">setMotorSpeed</span><span class="p">(</span><span class="n">motorB</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">);</span><span class="w"> </span><span class="c1">// ポートBのモータを50%のデューティ比で正転</span>
+<span class="w">  </span><span class="n">setMotorSpeed</span><span class="p">(</span><span class="n">motorC</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">);</span><span class="w"> </span><span class="c1">// ポートCのモータを50%のデューティ比で正転</span>
+<span class="w">  </span><span class="n">wait1Msec</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span><span class="w">           </span><span class="c1">// 3000ミリ秒間 (3秒間)待機</span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+</details>
+<details class="example"><summary>モータの回転速度と回転度を指定して動かす方法</summary><div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">MicroPython</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env pybricks-micropython</span>
+<span class="kn">from</span> <span class="nn">pybricks.hubs</span> <span class="kn">import</span> <span class="n">EV3Brick</span>
+<span class="kn">from</span> <span class="nn">pybricks.ev3devices</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Motor</span><span class="p">,</span> <span class="n">TouchSensor</span><span class="p">,</span> <span class="n">ColorSensor</span><span class="p">,</span>
+                                 <span class="n">InfraredSensor</span><span class="p">,</span> <span class="n">UltrasonicSensor</span><span class="p">,</span> <span class="n">GyroSensor</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pybricks.parameters</span> <span class="kn">import</span> <span class="n">Port</span><span class="p">,</span> <span class="n">Stop</span><span class="p">,</span> <span class="n">Direction</span><span class="p">,</span> <span class="n">Button</span><span class="p">,</span> <span class="n">Color</span>
+<span class="kn">from</span> <span class="nn">pybricks.tools</span> <span class="kn">import</span> <span class="n">wait</span><span class="p">,</span> <span class="n">StopWatch</span><span class="p">,</span> <span class="n">DataLog</span>
+<span class="kn">from</span> <span class="nn">pybricks.robotics</span> <span class="kn">import</span> <span class="n">DriveBase</span>
+<span class="kn">from</span> <span class="nn">pybricks.media.ev3dev</span> <span class="kn">import</span> <span class="n">SoundFile</span><span class="p">,</span> <span class="n">ImageFile</span>
+
+<span class="n">ev3</span> <span class="o">=</span> <span class="n">EV3Brick</span><span class="p">()</span>
+
+<span class="n">motorB</span> <span class="o">=</span> <span class="n">Motor</span><span class="p">(</span><span class="n">Port</span><span class="o">.</span><span class="n">B</span><span class="p">)</span>
+<span class="n">motorC</span> <span class="o">=</span> <span class="n">Motor</span><span class="p">(</span><span class="n">Port</span><span class="o">.</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">motorB</span><span class="o">.</span><span class="n">run_angle</span><span class="p">(</span><span class="mi">3600</span><span class="p">,</span>  <span class="mi">360</span><span class="p">,</span> <span class="n">Stop</span><span class="o">.</span><span class="n">HOLD</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="c1"># 第4引数をFalseにすると指定角度到達まで待たない</span>
+<span class="n">motorC</span><span class="o">.</span><span class="n">run_angle</span><span class="p">(</span><span class="mi">3600</span><span class="p">,</span> <span class="o">-</span><span class="mi">360</span><span class="p">)</span> <span class="c1"># 第4引数はデフォルトでTrueなので指定角度到達まで待つ</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Robot C</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">task</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">moveMotorTarget</span><span class="p">(</span><span class="n">motorB</span><span class="p">,</span><span class="w"> </span><span class="mi">360</span><span class="p">,</span><span class="w">  </span><span class="mi">50</span><span class="p">);</span><span class="w"> </span><span class="c1">// ポートBのモータを+50%で360度回転させる</span>
+<span class="w">  </span><span class="n">moveMotorTarget</span><span class="p">(</span><span class="n">motorC</span><span class="p">,</span><span class="w"> </span><span class="mi">360</span><span class="p">,</span><span class="w"> </span><span class="mi">-50</span><span class="p">);</span><span class="w"> </span><span class="c1">// ポートCのモータを-50%で360度回転させる</span>
+<span class="w">  </span><span class="n">waitUntilMotorStop</span><span class="p">(</span><span class="n">motorB</span><span class="p">);</span><span class="w">        </span><span class="c1">// ポートBのモータが停止するまで保持</span>
+<span class="w">  </span><span class="n">waitUntilMotorStop</span><span class="p">(</span><span class="n">motorC</span><span class="p">);</span><span class="w">        </span><span class="c1">// ポートCのモータが停止するまで保持</span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+</details>
+<h3 id="_4">各種センサ</h3>
+<details class="example"><summary>センサの種類</summary><div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">MicroPython</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env pybricks-micropython</span>
+<span class="kn">from</span> <span class="nn">pybricks.hubs</span> <span class="kn">import</span> <span class="n">EV3Brick</span>
+<span class="kn">from</span> <span class="nn">pybricks.ev3devices</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Motor</span><span class="p">,</span> <span class="n">TouchSensor</span><span class="p">,</span> <span class="n">ColorSensor</span><span class="p">,</span>
+                                 <span class="n">InfraredSensor</span><span class="p">,</span> <span class="n">UltrasonicSensor</span><span class="p">,</span> <span class="n">GyroSensor</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pybricks.parameters</span> <span class="kn">import</span> <span class="n">Port</span><span class="p">,</span> <span class="n">Stop</span><span class="p">,</span> <span class="n">Direction</span><span class="p">,</span> <span class="n">Button</span><span class="p">,</span> <span class="n">Color</span>
+<span class="kn">from</span> <span class="nn">pybricks.tools</span> <span class="kn">import</span> <span class="n">wait</span><span class="p">,</span> <span class="n">StopWatch</span><span class="p">,</span> <span class="n">DataLog</span>
+<span class="kn">from</span> <span class="nn">pybricks.robotics</span> <span class="kn">import</span> <span class="n">DriveBase</span>
+<span class="kn">from</span> <span class="nn">pybricks.media.ev3dev</span> <span class="kn">import</span> <span class="n">SoundFile</span><span class="p">,</span> <span class="n">ImageFile</span>
+<span class="hll"><span class="kn">from</span> <span class="nn">pybricks.nxtdevices</span> <span class="kn">import</span> <span class="n">SoundSensor</span>
+</span>
+<span class="n">ev3</span> <span class="o">=</span> <span class="n">EV3Brick</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">displayTextLine</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>      <span class="c1"># Robot C 同様の関数を定義</span>
+    <span class="n">ev3</span><span class="o">.</span><span class="n">screen</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">*</span><span class="mi">16</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+<span class="n">ts</span> <span class="o">=</span> <span class="n">TouchSensor</span><span class="p">(</span><span class="n">Port</span><span class="o">.</span><span class="n">S1</span><span class="p">)</span>
+<span class="n">ss</span> <span class="o">=</span> <span class="n">SoundSensor</span><span class="p">(</span><span class="n">Port</span><span class="o">.</span><span class="n">S2</span><span class="p">)</span>
+<span class="n">cs</span> <span class="o">=</span> <span class="n">ColorSensor</span><span class="p">(</span><span class="n">Port</span><span class="o">.</span><span class="n">S3</span><span class="p">)</span>
+<span class="n">us</span> <span class="o">=</span> <span class="n">UltrasonicSensor</span><span class="p">(</span><span class="n">Port</span><span class="o">.</span><span class="n">S4</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">ev3</span><span class="o">.</span><span class="n">screen</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">displayTextLine</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;touch: &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">pressed</span><span class="p">()))</span>
+    <span class="n">displayTextLine</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;sound: &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">ss</span><span class="o">.</span><span class="n">intensity</span><span class="p">()))</span>
+    <span class="n">displayTextLine</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;light: &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">cs</span><span class="o">.</span><span class="n">reflection</span><span class="p">()))</span>
+    <span class="n">displayTextLine</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;sonar: &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">us</span><span class="o">.</span><span class="n">distance</span><span class="p">()))</span>
+    <span class="n">wait</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Robot C</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">task</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">SensorType</span><span class="p">[</span><span class="n">S1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensorEV3_Touch</span><span class="p">;</span><span class="w">  </span><span class="c1">// センサのタイプを宣言</span>
+<span class="w">  </span><span class="n">SensorType</span><span class="p">[</span><span class="n">S2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensorSoundDB</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">SensorType</span><span class="p">[</span><span class="n">S3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensorEV3_Color</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">SensorType</span><span class="p">[</span><span class="n">S4</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensorEV3_Ultrasonic</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// 0 or 1</span>
+<span class="w">    </span><span class="n">displayTextLine</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s">&quot;touch: %d &quot;</span><span class="p">,</span><span class="n">SensorValue</span><span class="p">(</span><span class="n">S1</span><span class="p">));</span><span class="w"> </span><span class="c1">// 液晶の0行目にポート1のセンサ（タッチ）の値を表示</span>
+
+<span class="w">    </span><span class="c1">// 0 (silent) to 100 (noisy)</span>
+<span class="w">    </span><span class="n">displayTextLine</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s">&quot;sound: %d &quot;</span><span class="p">,</span><span class="n">SensorValue</span><span class="p">(</span><span class="n">S2</span><span class="p">));</span><span class="w"> </span><span class="c1">// 液晶の1行目にポート2のセンサ（サウンド）の値を表示</span>
+
+<span class="w">    </span><span class="c1">// 0 (dark) to 100 (light)</span>
+<span class="w">    </span><span class="n">displayTextLine</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s">&quot;light: %d &quot;</span><span class="p">,</span><span class="n">SensorValue</span><span class="p">(</span><span class="n">S3</span><span class="p">));</span><span class="w"> </span><span class="c1">// 液晶の2行目にポート3のセンサ（カラー）の値を表示</span>
+
+<span class="w">    </span><span class="c1">// 0[cm] to 255[cm]</span>
+<span class="w">    </span><span class="n">displayTextLine</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s">&quot;sonar: %d &quot;</span><span class="p">,</span><span class="n">SensorValue</span><span class="p">(</span><span class="n">S4</span><span class="p">));</span><span class="w"> </span><span class="c1">// 液晶の3行目にポート4のセンサ（超音波）の値を表示</span>
+
+<span class="w">    </span><span class="n">wait1Msec</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+</details>
+<details class="example"><summary>超音波センサ</summary><div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">MicroPython</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env pybricks-micropython</span>
+<span class="kn">from</span> <span class="nn">pybricks.hubs</span> <span class="kn">import</span> <span class="n">EV3Brick</span>
+<span class="kn">from</span> <span class="nn">pybricks.ev3devices</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Motor</span><span class="p">,</span> <span class="n">TouchSensor</span><span class="p">,</span> <span class="n">ColorSensor</span><span class="p">,</span>
+                                 <span class="n">InfraredSensor</span><span class="p">,</span> <span class="n">UltrasonicSensor</span><span class="p">,</span> <span class="n">GyroSensor</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pybricks.parameters</span> <span class="kn">import</span> <span class="n">Port</span><span class="p">,</span> <span class="n">Stop</span><span class="p">,</span> <span class="n">Direction</span><span class="p">,</span> <span class="n">Button</span><span class="p">,</span> <span class="n">Color</span>
+<span class="kn">from</span> <span class="nn">pybricks.tools</span> <span class="kn">import</span> <span class="n">wait</span><span class="p">,</span> <span class="n">StopWatch</span><span class="p">,</span> <span class="n">DataLog</span>
+<span class="kn">from</span> <span class="nn">pybricks.robotics</span> <span class="kn">import</span> <span class="n">DriveBase</span>
+<span class="kn">from</span> <span class="nn">pybricks.media.ev3dev</span> <span class="kn">import</span> <span class="n">SoundFile</span><span class="p">,</span> <span class="n">ImageFile</span>
+
+<span class="n">ev3</span> <span class="o">=</span> <span class="n">EV3Brick</span><span class="p">()</span>
+
+<span class="n">motorB</span> <span class="o">=</span> <span class="n">Motor</span><span class="p">(</span><span class="n">Port</span><span class="o">.</span><span class="n">B</span><span class="p">)</span>
+<span class="n">motorC</span> <span class="o">=</span> <span class="n">Motor</span><span class="p">(</span><span class="n">Port</span><span class="o">.</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">us</span> <span class="o">=</span> <span class="n">UltrasonicSensor</span><span class="p">(</span><span class="n">Port</span><span class="o">.</span><span class="n">S4</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="n">us</span><span class="o">.</span><span class="n">distance</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span> <span class="c1"># distance() が 100mmより大きい間，繰り返し</span>
+    <span class="n">motorB</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">motorC</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="n">motorB</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span> <span class="c1"># モータ停止</span>
+<span class="n">motorC</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+<span class="n">ev3</span><span class="o">.</span><span class="n">speaker</span><span class="o">.</span><span class="n">set_volume</span><span class="p">(</span><span class="mi">75</span><span class="p">)</span>
+<span class="n">ev3</span><span class="o">.</span><span class="n">speaker</span><span class="o">.</span><span class="n">play_file</span><span class="p">(</span><span class="n">SoundFile</span><span class="o">.</span><span class="n">OKAY</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Robot C</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">task</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">repeatUntil</span><span class="p">(</span><span class="n">getUSDistance</span><span class="p">(</span><span class="n">S4</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="c1">// ポート4のセンサ（超音波）の値が10以下に        なるまで</span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">setMotorSpeed</span><span class="p">(</span><span class="n">motorB</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">);</span><span class="w"> </span><span class="c1">// モータB,Cの速度を50%に指定</span>
+<span class="w">    </span><span class="n">setMotorSpeed</span><span class="p">(</span><span class="n">motorC</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">setMotorSpeed</span><span class="p">(</span><span class="n">motorB</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// モータB,Cの速度を0%に指定</span>
+<span class="w">  </span><span class="n">setMotorSpeed</span><span class="p">(</span><span class="n">motorC</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">setSoundVolume</span><span class="p">(</span><span class="mi">75</span><span class="p">);</span><span class="w">    </span><span class="c1">// 音量を75に設定</span>
+<span class="w">  </span><span class="n">playSoundFile</span><span class="p">(</span><span class="s">&quot;Okay&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// サウンドファイルOkayを再生</span>
+<span class="w">  </span><span class="n">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w">           </span><span class="c1">// 1000msecスリープ</span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+</details>
+<details class="example"><summary>ジャイロセンサ</summary><div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">MicroPython</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env pybricks-micropython</span>
+<span class="kn">from</span> <span class="nn">pybricks.hubs</span> <span class="kn">import</span> <span class="n">EV3Brick</span>
+<span class="kn">from</span> <span class="nn">pybricks.ev3devices</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Motor</span><span class="p">,</span> <span class="n">TouchSensor</span><span class="p">,</span> <span class="n">ColorSensor</span><span class="p">,</span>
+                                 <span class="n">InfraredSensor</span><span class="p">,</span> <span class="n">UltrasonicSensor</span><span class="p">,</span> <span class="n">GyroSensor</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pybricks.parameters</span> <span class="kn">import</span> <span class="n">Port</span><span class="p">,</span> <span class="n">Stop</span><span class="p">,</span> <span class="n">Direction</span><span class="p">,</span> <span class="n">Button</span><span class="p">,</span> <span class="n">Color</span>
+<span class="kn">from</span> <span class="nn">pybricks.tools</span> <span class="kn">import</span> <span class="n">wait</span><span class="p">,</span> <span class="n">StopWatch</span><span class="p">,</span> <span class="n">DataLog</span>
+<span class="kn">from</span> <span class="nn">pybricks.robotics</span> <span class="kn">import</span> <span class="n">DriveBase</span>
+<span class="kn">from</span> <span class="nn">pybricks.media.ev3dev</span> <span class="kn">import</span> <span class="n">SoundFile</span><span class="p">,</span> <span class="n">ImageFile</span>
+
+<span class="n">ev3</span> <span class="o">=</span> <span class="n">EV3Brick</span><span class="p">()</span>
+
+<span class="n">motorB</span> <span class="o">=</span> <span class="n">Motor</span><span class="p">(</span><span class="n">Port</span><span class="o">.</span><span class="n">B</span><span class="p">)</span>
+<span class="n">motorC</span> <span class="o">=</span> <span class="n">Motor</span><span class="p">(</span><span class="n">Port</span><span class="o">.</span><span class="n">C</span><span class="p">)</span>
+
+<span class="n">gs</span> <span class="o">=</span> <span class="n">GyroSensor</span><span class="p">(</span><span class="n">Port</span><span class="o">.</span><span class="n">S2</span><span class="p">)</span>
+<span class="n">gs</span><span class="o">.</span><span class="n">reset_angle</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="n">gs</span><span class="o">.</span><span class="n">angle</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">90</span><span class="p">:</span>  <span class="c1"># angle()が90度未満の間，繰り返し</span>
+    <span class="n">motorB</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">motorC</span><span class="o">.</span><span class="n">dc</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="n">motorB</span><span class="o">.</span><span class="n">brake</span><span class="p">()</span> <span class="c1"># ブレーキ</span>
+<span class="n">motorC</span><span class="o">.</span><span class="n">brake</span><span class="p">()</span>
+<span class="n">gyro</span><span class="o">.</span><span class="n">py</span> <span class="p">(</span><span class="n">END</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">Robot C</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">task</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">//Resets the gyro on port 2 to 0 degrees</span>
+<span class="w">  </span><span class="n">resetGyro</span><span class="p">(</span><span class="n">S2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">//Keep looping until the gyro sensor reads greater</span>
+<span class="w">  </span><span class="c1">//than 90 degrees</span>
+
+<span class="w">  </span><span class="n">repeatUntil</span><span class="p">(</span><span class="n">getGyroDegrees</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">90</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//Point turn to the left</span>
+<span class="w">    </span><span class="n">setMotorSpeed</span><span class="p">(</span><span class="n">motorC</span><span class="p">,</span><span class="w"> </span><span class="mi">-50</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">setMotorSpeed</span><span class="p">(</span><span class="n">motorB</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">//Stop the motors at the end of the turn</span>
+<span class="w">  </span><span class="n">setMotorSpeed</span><span class="p">(</span><span class="n">motorB</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">setMotorSpeed</span><span class="p">(</span><span class="n">motorC</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+</details>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="フッター">
+      
+        
+        <a href="../install_vscode/" class="md-footer__link md-footer__link--prev" aria-label="前: 開発環境の構築" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                前
+              </span>
+              開発環境の構築
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.top", "toc.integrate"], "translations": {"clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.756773cc.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+      
+        <script src="../javascripts/config.js"></script>
+      
+    
+  </body>
+</html>
